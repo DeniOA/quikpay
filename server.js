@@ -1,9 +1,9 @@
 //Install express server
 // const express = require('express');
-var serveStatic = require('serve-static');
+const serveStatic = require('serve-static');
 const path = require('path');
 
-const app = express();
+const app = serve-static();
 
 // Serve only the static files form the dist directory
 app.use(serveStatic(__dirname, {'index': ['index.html']}))
