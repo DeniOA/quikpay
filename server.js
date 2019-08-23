@@ -8,10 +8,7 @@ const app = express();
 app.use(express.static(__dirname + '/dist/<quickpay>'));
 
 app.get('/*', function(req,res) {
-
-  
-  var serveStatic = require('serve-static');
-  app.use(serveStatic(__dirname, {'index': ['index.html']}))
+  res.sendFile(path.join(__dirname + '/dist/quickpay/index.html'));
   
   });
 
