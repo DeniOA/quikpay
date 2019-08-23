@@ -1,0 +1,140 @@
+<div class="header  pb-8 pt-5 pt-md-8">
+  <div class="container">
+    <span class=""></span>
+    <div class="container-fluid d-flex align-items-right">
+      <div class="row">
+        <div class="col-lg-12 order-xl-1">
+          <div class="card ">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Create New Recipient</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <form
+                #recipientForm="ngForm"
+                (ngSubmit)="createRecipient(recipientForm.form)"
+                novalidate
+              >
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="type" class="form-control-label"
+                          >Account Type</label
+                        >
+                        <select
+                          class="form-control"
+                          id="type"
+                          name="type"
+                          required
+                          #nameField="ngModel"
+                          ngModel
+                        >
+                          <option value="nuban">Nuban</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="name"
+                          >Name</label
+                        >
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          class="form-control form-control-alternative"
+                          placeholder="Recipient Name"
+                          ngModel
+                          #nameField="ngModel"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="account_number"
+                          >Account Number</label
+                        >
+                        <input
+                          type="text"
+                          id="account_number"
+                          name="account_number"
+                          class="form-control form-control-alternative"
+                          placeholder="account number"
+                          ngModel
+                          #nameField="ngModel"
+                          required
+                          minlength="10"
+                        />
+                      </div>
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="nameField.touched && !nameField.valid"
+                      >
+                        The account number is required
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <label for="bank_code" class="form-control-label"
+                        >Choose Bank</label
+                      >
+                      <select
+                        class="form-control"
+                        id="bank_code"
+                        name="bank_code"
+                        ngModel
+                        #nameField="ngModel"
+                        required
+                      >
+                        <option
+                          *ngFor="let code of banks"
+                          value="{{ code.code }}"
+                          >{{ code.name }}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="currency"
+                          >NGN</label
+                        >
+                        <select
+                          class="form-control"
+                          id="currency"
+                          name="currency"
+                          required
+                          #nameField="ngModel"
+                          ngModel
+                        >
+                          <option value="NGN">NGN</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <hr class="my-4" />
+                    <div class="col-lg-2 col-md-4">
+                      <button
+                        type="submit"
+                        class="btn btn-block btn-info"
+                        [disabled]="!recipientForm.valid"
+                      >
+                        Create Recipient
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
