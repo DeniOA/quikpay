@@ -1,11 +1,13 @@
 //Install express server
-const express = require('express');
+// const express = require('express');
+var serveStatic = require('serve-static');
 const path = require('path');
 
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/<quickpay>'));
+app.use(serveStatic(__dirname, {'index': ['index.html']}))
+// app.use(express.static(__dirname + '/dist/<quickpay>'));
 
 app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname + '/dist/quickpay/index.html'));
