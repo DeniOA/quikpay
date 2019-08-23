@@ -9,10 +9,7 @@
 // app.use(serveStatic(__dirname, {'index': ['index.html']}))
 // app.use(express.static(__dirname + '/dist/<quickpay>'));
 
-// app.get('/*', function(req,res) {
-//   res.sendFile(path.join(__dirname + '/dist/quickpay/index.html'));
-  
-//   });
+
 
 var express = require('express')
 var path = require('path')
@@ -22,7 +19,12 @@ var app = express()
 
 app.use(serveStatic(path.join(__dirname, '/dist/quickpay/index.html')))
 app.use(serveStatic(path.join(__dirname, '/src/index.html')))
-app.listen(3000)
+
+
+app.get('/*', function(req,res) {
+  res.sendFile(path.join(__dirname + '/dist/quickpay/index.html'));
+  
+  });
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
