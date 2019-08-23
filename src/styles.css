@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  font-family: "Century Gothic","Apple Gothic",AppleGothic,"URW Gothic L","Avant Garde",Futura,sans-serif !important;
+}
+
+
+
+@media (min-width: 768px){
+.main-content {
+    margin-left: 250px;
+}
+}
+
+
+.navbar-dark .navbar-nav .nav-link {
+  color: Black;
+}
+
+.fas{
+  margin: 0.8rem !important;
+}
+
+text-black {
+  color: black;
+}
+
+
