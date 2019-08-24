@@ -1,3 +1,16 @@
 body, p, h4, h1, h2 {
   font-family: 'Oxygen', "Century Gothic","Apple Gothic",AppleGothic,"URW Gothic L","Avant Garde",Futura,sans-serif !important;
 }
+
+.navigation .btn-outline, .navigation.navbar-sticky .btn-outline {
+  color: #9f55ff !important;
+  border-color: #9f55ff !important;
+}
+
+@media (min-width: 768px){
+.navigation .btn-outline {
+    color: #fff;
+    border-color: #fff;
+    color: #fff;
+}
+}
