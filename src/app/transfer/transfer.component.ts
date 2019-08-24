@@ -26,19 +26,18 @@ import {IRecipient } from './services/recipient';
     color: #ff1e1e;
   },
 
-@media (min-width: 768px){
 .col-md-4 {
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
-    max-width: 50% !important;}
+    max-width: 50% !important;
 },
-@media (min-width: 768px){
+
 .form-inline .custom-select, .form-inline .input-group {
   width: auto;
   margin-left: 17rem;
   top: 1rem;
 }
-}
+
 
 `]
 })
