@@ -11,6 +11,13 @@ html, body {
 }
 }
 
+@media (max-width: 768px){
+  .btn-info:disabled {
+      width: max-content !important;
+  }
+  }
+  
+  
 
 .navbar-dark .navbar-nav .nav-link {
   color: Black;
