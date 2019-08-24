@@ -14,3 +14,25 @@ body, p, h4, h1, h2 {
     color: #fff;
 }
 }
+
+@media (min-width: 768px){
+.navigation.navbar-sticky {
+    background-color: #fff;
+    top: 0;
+}
+}
+
+.navigation.navbar-sticky {
+  position: fixed!important;
+  background-color: #fff !important;
+  left: 0;
+  top: 0;
+  right: 0;
+  border-bottom: 1px solid rgba(0,0,0,.11) !important;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.11);
+  box-shadow: 0 0 5px rgba(0,0,0,.11) !important;
+  min-height: 90px !important;
+  z-index: 1030 !important;
+  -webkit-transition: all .6s ease-in-out ;
+  transition: all .6s ease-in-out !important;
+}
