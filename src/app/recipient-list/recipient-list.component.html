@@ -56,6 +56,28 @@
                     </div>
 
                     <div class="col-lg-12">
+                        <label for="recipient" class="form-control-label"
+                          >Choose Recipient</label
+                        >
+                        <select
+                          class="form-control"
+                          id="recipient"
+                          #t
+                          (change)="selectedRecipient(t.value, transferForm.form)"
+                          name="recipient"
+                          ngModel
+                          #nameField="ngModel"
+                          required
+                        >
+                          <option
+                            *ngFor="let code of recipient"
+                            value="{{ code.recipient_code }}"
+                            >{{ code.name }}</option
+                          >
+                        </select>
+                      </div>
+
+                    <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="name"
                           >Account Number</label
@@ -93,27 +115,6 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-12">
-                      <label for="recipient" class="form-control-label"
-                        >Choose Recipient</label
-                      >
-                      <select
-                        class="form-control"
-                        id="recipient"
-                        #t
-                        (change)="selectedRecipient(t.value, transferForm.form)"
-                        name="recipient"
-                        ngModel
-                        #nameField="ngModel"
-                        required
-                      >
-                        <option
-                          *ngFor="let code of recipient"
-                          value="{{ code.recipient_code }}"
-                          >{{ code.name }}</option
-                        >
-                      </select>
-                    </div>
 
                     <div class="col-lg-12">
                       <div class="form-group">

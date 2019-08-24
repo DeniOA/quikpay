@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel} from '@angular/forms';
 
-
-
 import {  Router, ActivatedRoute } from '@angular/router';
 import {  transferService } from './services/transfer.service';
 import { HttpClient } from '@angular/common/http';
@@ -26,12 +24,26 @@ import {IRecipient } from './services/recipient';
   }
   .filled.bad {
     color: #ff1e1e;
-  }
+  },
+
+@media (min-width: 768px){
+.col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 50% !important;}
+},
+@media (min-width: 768px){
+.form-inline .custom-select, .form-inline .input-group {
+  width: auto;
+  margin-left: 17rem;
+  top: 1rem;
+}
+}
+
 `]
 })
 export class TransferComponent implements OnInit {
 
-  currentRate = 6;
   recipient;
   public banks: any[];
 
@@ -59,8 +71,8 @@ export class TransferComponent implements OnInit {
       currency: recipientForm.value.currency
     };
     this._transferService.newRecipient(this.recipient).subscribe(() => {
-      alert("The form was submitted");
-      // recipientForm.reset();
+      alert('Recipient' +recipientForm.value.name+ ' was created');
+      recipientForm.reset();
       this.router.navigate(['/recipient-list'])
     });
 
