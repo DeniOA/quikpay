@@ -155,7 +155,7 @@
 
     <ng-template #longContent let-modal>
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title"><strong>Please Confirm Transaction Details</strong></h4>
         <button
           type="button"
           class="close"
@@ -167,14 +167,14 @@
       </div>
       <div class="modal-body">
         <div class="card" style="width: 18rem;">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title">Please Confirm Transaction details</h5>
-          </div>
+          </div> -->
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              Transfer to: {{ recipient[index].name }}
+              <strong>Transfer to</strong>: {{ recipient[index].name }}
             </li>
-            <li class="list-group-item">Amount: {{ modalData.amount }}</li>
+            <li class="list-group-item"><strong>Amount</strong>: {{ modalData.amount }}</li>
           </ul>
         </div>
       </div>

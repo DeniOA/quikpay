@@ -47,7 +47,6 @@ export class RecipientListComponent implements OnInit {
   amount: number;
 
   tRef = '';
-  result = '';
 
   modalData;
   name: any;
@@ -97,14 +96,12 @@ export class RecipientListComponent implements OnInit {
   
   }
       transferNow(){
+        this.showModal = true;
         this._transferService.transferRecipient(this.transfer).subscribe(() => {
           this.paystackAmount = (Number(this.transfer.amount)*100);
           this.tRef = ''+Math.floor((Math.random() * 1000000000) + 1);
           
-          this.showPaystack = true;
-         
-          // alert("The form was submitted");
-          this.form.reset();
+        
         });
       }
 
@@ -115,6 +112,8 @@ export class RecipientListComponent implements OnInit {
 
   sayHello() {
     alert('Transaction Successful' );
+    this.modalService.dismissAll();
+     this.form.reset();
   }
 
   
