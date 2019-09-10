@@ -4,6 +4,7 @@ import {  HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClientModule} from '@angular/common/http';
 import {IRecipient} from './recipient';
 import {ITransfer} from './transfer';
+import { IFinalize } from './finalize';
 
 
 
@@ -37,6 +38,10 @@ export class transferService
         console.log(error);
         return throwError(error);
         
+      }
+
+      finalizeTransfer(details){
+        return this.http.post<IFinalize>('https://api.paystack.co/transfer/finalize_transfer', details, this.options);
       }
 
      

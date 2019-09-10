@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm, NgModel} from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {  Router, ActivatedRoute } from '@angular/router';
 import {  transferService } from '../transfer/services/transfer.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,6 +28,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
           margin-left: 17rem !important;
           top: 1rem !important;
         }
+
+        .otp fieldset, .otp input {
+          border: none;
+          float: left;
+        }
+        .otp input {
+          width: 40px;
+          padding: 5px;
+          margin-right: 20px;
+          border-bottom: 2px solid #999;
+          text-align: center;
+          font-size: 26px;
+        }
         
   `]
 })
@@ -38,20 +51,25 @@ export class RecipientListComponent implements OnInit {
   value;
   number;
   bank;
+  amount;
   
   public banks: any[];
   public recipient: any[];
   public paystackAmount: number;
   public showPaystack: boolean = false;
   public showModal: boolean = false;
-  amount: number;
+ otp;
 
   tRef = '';
 
   modalData;
   name: any;
   form: NgForm;
-
+  closeResult: string;
+  t_code: any;
+  details: { otp: any; transfer_code: any; };
+  modalInfo: any;
+ 
   constructor( http: HttpClient, private _transferService: transferService, private router: Router,private route: ActivatedRoute, private modalService: NgbModal ) {
 
     let headers = new HttpHeaders()
@@ -97,14 +115,35 @@ export class RecipientListComponent implements OnInit {
   }
       transferNow(){
         this.showModal = true;
-        this._transferService.transferRecipient(this.transfer).subscribe(() => {
+        this._transferService.transferRecipient(this.transfer).subscribe((result: any) => {
+          console.log(result);
+          this.t_code = result.data.transfer_code;
+          console.log(this.t_code);
           this.paystackAmount = (Number(this.transfer.amount)*100);
           this.tRef = ''+Math.floor((Math.random() * 1000000000) + 1);
-          
-        
+    
         });
+
+        // this.open(content);
       }
 
+ 
+
+      finalizeTransfer(finalizeForm: NgForm){
+
+        this.modalInfo = finalizeForm.value;
+        
+        this.details = {
+          otp: finalizeForm.value.otp,
+          transfer_code: this.t_code
+        }
+       
+        this._transferService.finalizeTransfer(this.details).subscribe(() => {
+         
+          this.sayHello();
+          
+        });
+      }
 
   openBackDropCustomClass(longContent) {
     this.modalService.open(longContent, {backdropClass: 'light-blue-backdrop'});
@@ -116,6 +155,24 @@ export class RecipientListComponent implements OnInit {
      this.form.reset();
   }
 
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   
 
   paymentCancel() {
