@@ -35,7 +35,7 @@
     "bootstrap-material-design": "^4.1.2",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mat-progress-buttons": "^8.0.4",
     "ng-shopping-cart": "^1.0.0",
     "popper.js": "^1.15.0",
